@@ -22,7 +22,8 @@ public class TransactionDepositCLI implements WithdrawDepositOperationCLIUI{
             System.out.println("Type amount of money");
             double amount = withdrawDepositOperationCLIUI.requestClientAmount();
             transactionDeposit.execute(account, amount);
-            System.out.println(String.format("%,.2f", amount) + "$ transferred to " + account.getAccountId() + " account");
+            System.out.println(String.format("%,.2f", amount) + "$ transferred to "
+                                                + account.getAccountId() + " account");
             myCLI.getScanner().nextLine();
             }
     }

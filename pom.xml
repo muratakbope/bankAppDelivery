@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>kz.singularity</groupId>
-    <artifactId>bankAppRepository</artifactId>
+    <artifactId>bankAppDelivery</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>SOLIDBankApp3</name>
     <description>SOLIDBankApp3</description>
@@ -24,6 +24,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.2.0</version>
         </dependency>
         <dependency>
             <groupId>jakarta.xml.bind</groupId>

@@ -13,6 +13,7 @@ public class TransactionDeposit {
 
     void execute(Account account, double amount) {
         accountDepositService.deposit(amount, account);
-        transactionRepository.save(new Transaction(account.getAccountId(), TransactionType.DEPOSIT, amount, account.getBalance()));
+        transactionRepository.save(new Transaction(account.getAccountId(),
+                TransactionType.DEPOSIT, amount, account.getBalance()));
     }
 }

@@ -25,10 +25,12 @@ public class TransactionWithdrawCLI implements WithdrawDepositOperationCLIUI{
                 double amount = withdrawDepositOperationCLIUI.requestClientAmount();
                 if (accountWithdraw.getBalance() - amount >= 0) {
                     transactionWithdraw.execute(accountWithdraw, amount);
-                    System.out.println(String.format("%,.2f", amount) + "$ transferred from " + account.getAccountId() + " account");
+                    System.out.println(String.format("%,.2f", amount) + "$ transferred from "
+                            + account.getAccountId() + " account");
                     myCLI.getScanner().nextLine();
                 } else {
-                    System.out.println("Sorry, you have insufficient funds to withdraw the request amount. Your account balance is " + String.format("%.2f", accountWithdraw.getBalance()) + "$");
+                    System.out.println("Sorry, you have insufficient funds to withdraw the request amount. " +
+                            "Your account balance is " + String.format("%.2f", accountWithdraw.getBalance()) + "$");
                     myCLI.getScanner().nextLine();
                 }
             } else {

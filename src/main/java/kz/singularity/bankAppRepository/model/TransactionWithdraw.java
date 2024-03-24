@@ -14,6 +14,7 @@ public class TransactionWithdraw {
 
     void execute(AccountWithdraw accountWithdraw, double amount) {
         accountWithdrawService.withdraw(amount, accountWithdraw);
-        transactionRepository.save(new Transaction(accountWithdraw.getAccountId(), TransactionType.WITHDRAW, amount, accountWithdraw.getBalance()));
+        transactionRepository.save(new Transaction(accountWithdraw.getAccountId(),
+                TransactionType.WITHDRAW, amount, accountWithdraw.getBalance()));
     }
 }
