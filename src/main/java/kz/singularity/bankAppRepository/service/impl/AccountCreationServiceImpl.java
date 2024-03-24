@@ -25,9 +25,12 @@ public class AccountCreationServiceImpl implements AccountCreationService {
         String accountUIID = String.format("%03d%06d", 1, Integer.parseInt(accountId));
 
         switch (accountType) {
-                case FIXED -> accountRepository.save(new FixedAccount(accountType, accountUIID, clientId, 0.0, true));
-                case SAVING -> accountRepository.save(new SavingAccount(accountType, accountUIID, clientId, 0.0, true));
-                case CHECKING -> accountRepository.save(new CheckingAccount(accountType, accountUIID, clientId, 0.0, true));
+                case FIXED -> accountRepository.save(new FixedAccount(accountType,
+                        accountUIID, clientId, 0.0, true));
+                case SAVING -> accountRepository.save(new SavingAccount(accountType,
+                        accountUIID, clientId, 0.0, true));
+                case CHECKING -> accountRepository.save(new CheckingAccount(accountType,
+                        accountUIID, clientId, 0.0, true));
                 default -> System.out.println("Wrong input!");
             }
     }

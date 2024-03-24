@@ -12,13 +12,13 @@ import org.springframework.context.ApplicationContext;
 
 
 @SpringBootApplication
-public class bankAppRepository implements CommandLineRunner {
+public class bankAppDelivery implements CommandLineRunner {
     @Autowired
     private ApplicationContext context;
 
     public static void main(String[] args) {
 
-        SpringApplication.run(bankAppRepository.class);
+        SpringApplication.run(bankAppDelivery.class);
     }
 
     @Override
@@ -31,7 +31,8 @@ public class bankAppRepository implements CommandLineRunner {
         TransactionDepositCLI transactionDepositCLI = context.getBean(TransactionDepositCLI.class);
         TransactionWithdrawCLI transactionWithdrawCLI = context.getBean(TransactionWithdrawCLI.class);
 
-        String helpMessage = "1 - show accounts\n2 - create account\n3 - deposit\n4 - withdraw\n5 - transfer\n6 - this message\n7 - exit\n";
+        String helpMessage = "1 - show accounts\n2 - create account\n3 " +
+                "- deposit\n4 - withdraw\n5 - transfer\n6 - this message\n7 - exit\n";
         System.out.printf("Welcome to CLI bank service\n");
         System.out.printf("Enter operation number: \n");
         System.out.printf(helpMessage);
@@ -39,35 +40,19 @@ public class bankAppRepository implements CommandLineRunner {
             try {
                 switch (myCLI.getScanner().nextLine()) {
 
-                    case "1":
-                        accountBasicCLI.getAccounts(clientId);
-                        break;
-
-                    case "2":
+                    case "1" -> accountBasicCLI.getAccounts(clientId);
+                    case "2" -> {
                         System.out.println("Choose account type: [ CHECKING, SAVING, FIXED ]");
                         accountBasicCLI.createAccountRequest(myCLI.requestAccountType(), clientId);
-                        break;
-
-                    case "3":
-                        transactionDepositCLI.depositMoney(clientId);
-                        break;
-
-                    case "4":
-                        transactionWithdrawCLI.withdrawMoney(clientId);
-                        break;
-
-                    case "6":
-                        System.out.printf(helpMessage);
-                        break;
-
-                    case "7":
+                    }
+                    case "3" -> transactionDepositCLI.depositMoney(clientId);
+                    case "4" -> transactionWithdrawCLI.withdrawMoney(clientId);
+                    case "6" -> System.out.printf(helpMessage);
+                    case "7" -> {
                         System.out.printf("Application Closed\n");
                         running = false;
-                        break;
-
-                    default:
-                        System.out.printf("Command not recognized!\n");
-                        break;
+                    }
+                    default -> System.out.printf("Command not recognized!\n");
                 }
             } catch (Exception e) {
                 System.out.println("Wrong input " + e.getMessage());
